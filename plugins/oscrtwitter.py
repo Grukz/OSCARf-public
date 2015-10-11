@@ -277,7 +277,7 @@ def favdelete(t_api):
                 print "Deleted:", status.id
             except:
                 print "Failed to delete:", status.id
-            sleep(3)
+            sleep(1.5)
     return
 
 def twitlookup(t_api):
