@@ -197,6 +197,8 @@ def twitMenu():
     8. Add user to sqlite db
     9. Delete all your tweets.
     10. Delete all favorites
+    11. Delete Received DMs
+    12. Delete Sent DMs
     0. Return
     """
     opt = raw_input("Enter an option: ")
@@ -227,6 +229,12 @@ def twitMenu():
         twitMenu()
     elif opt == "10":
         oscrtwitter.favdelete(t_api)
+        twitMenu()
+    elif opt == "11":
+        oscrtwitter.dm_batch(t_api)
+        twitMenu()
+    elif opt == "12":
+        oscrtwitter.dm_sent(t_api)
         twitMenu()
     elif opt == "0":
         main()

@@ -3,6 +3,7 @@
 
 # import sqlite3 for DB operations
 
+import itertools
 try:
     import sqlite3 as db
 except:
@@ -220,6 +221,41 @@ def batch_delete(t_api):
                 print "Failed to delete:", status.id
             sleep(.5)
     return
+
+def dm_batch(t_api):
+    print "You are about to Delete all RECEIEVED DMs from the account @%s." % t_api.verify_credentials().screen_name
+    print "Does this sound ok? There is no undo! Type yes to carry out this action."
+    do_delete = raw_input("> ")
+    if do_delete.lower() == 'yes':
+        direct_messages = tweepy.Cursor(t_api.direct_messages).items()
+        for direct_message in itertools.islice(direct_messages,0,None):
+        #for message in tweepy.Cursor(t_api.direct_messages).items():
+            try:
+                #t_api.destroy_direct_message(message.id)
+                t_api.destroy_direct_message(direct_message.id)
+                print "Deleted:", direct_message.id
+            except:
+                print "Failed to delete:", direct_message.id
+            sleep(2)
+    return
+
+def dm_sent(t_api):
+    print "You are about to Delete all SENT DMs from the account @%s." % t_api.verify_credentials().screen_name
+    print "Does this sound ok? There is no undo! Type yes to carry out this action."
+    do_delete = raw_input("> ")
+    if do_delete.lower() == 'yes':
+        sent_direct_messages = tweepy.Cursor(t_api.sent_direct_messages).items()
+        for direct_message in itertools.islice(sent_direct_messages,0,None):
+        #for message in tweepy.Cursor(t_api.direct_messages).items():
+            try:
+                #t_api.destroy_direct_message(message.id)
+                t_api.destroy_direct_message(direct_message.id)
+                print "Deleted:", direct_message.id
+            except:
+                print "Failed to delete:", direct_message.id
+            sleep(2)
+    return
+
 """
 def fdelete(t_api, stat):
     try:
