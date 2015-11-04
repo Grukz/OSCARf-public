@@ -236,7 +236,7 @@ def dm_batch(t_api):
                 print "Deleted:", direct_message.id
             except:
                 print "Failed to delete:", direct_message.id
-            sleep(2)
+            sleep(5)
     return
 
 def dm_sent(t_api):
@@ -253,7 +253,7 @@ def dm_sent(t_api):
                 print "Deleted:", direct_message.id
             except:
                 print "Failed to delete:", direct_message.id
-            sleep(2)
+            sleep(5)
     return
 
 """

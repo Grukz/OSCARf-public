@@ -31,7 +31,7 @@ def init(ips):
     if multiNetwork:
         try:
             while True:
-                cpy = raw_input("IP or IP/CIDR: ")
+                cpy = raw_input("IP or IP/CIDR [enter 'done' when finished]: ")
                 if "/" in cpy:
                     i = cpy.rstrip()
                     ip_list = list(IPNetwork(i))
@@ -41,6 +41,11 @@ def init(ips):
                 else:
                     cpy = cpy.rstrip()
                     ips.append(cpy)
+                if cpy == "done":
+                    trigger(ips,out)
+                    break
+                else:
+                    pass
         except KeyboardInterrupt:
             raise
     else:
@@ -48,13 +53,13 @@ def init(ips):
         cpy = cpy.rstrip()
         ips.append(cpy)
     trigger(ips,out)
-    
+
 def getcert(a):
     """Get SSL Cert CN"""
     refPorts = open('config/ports.txt', 'r').readlines()
     for port in refPorts:
-        # Make sure we don't have any extra characters like \n or \r 
-        port = port.rstrip() 
+        # Make sure we don't have any extra characters like \n or \r
+        port = port.rstrip()
         try:
             # time to connect!
             cert = ssl.get_server_certificate((a, port))
@@ -76,8 +81,8 @@ def getcert(a):
         except Exception,e:
             # if openssl fails to get information, return nothing
             continue
-    
-    
+
+
 def trigger(ips,out):
     """Start our SSL search/thread"""
     for ip in ips:
@@ -87,8 +92,3 @@ def trigger(ips,out):
     sleep(3)
     for val in out:
         print out[val]
-
-    
-
-
-
