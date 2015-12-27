@@ -60,7 +60,6 @@ from plugins import *
 
 try:
     import tweepy
-    #from tweepy import *
     from tweepy.streaming import *
 except:
     print "[+]ERROR: Unable to import the tweepy library installed!!"
@@ -196,21 +195,7 @@ def twitMenu():
     if t_auth is None or t_api is None:
         print "Twitter is disabled; please install an API key for twitter"
         return
-    print """
-    1. Live stream twitter (saved as csv)
-    2. Live stream NO LOGGING!
-    3. Gather last X tweets from user
-    4. View recent follows
-    5. View recent followers
-    6. Get count of mentions of another user (last 200 tweets)
-    7. Search for tweet
-    8. Add user to sqlite db
-    9. Delete all your tweets.
-    10. Delete all favorites
-    11. Delete Received DMs
-    12. Delete Sent DMs
-    0. Return
-    """
+    oscrtwitter.mmenu()
     opt = raw_input("Enter an option: ")
     if opt == "1":
         oscrtwitter.lv_stream(t_auth)

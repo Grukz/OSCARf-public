@@ -7,8 +7,7 @@ import itertools
 try:
     import sqlite3 as db
 except:
-    print "[+]ERROR: could not import sqlite3. You won't be able to add",
-    print "users to a sqliteDB!"
+    print "[+]ERROR: could not import sqlite3. You won't be able to add users to a sqliteDB!"
     pass
 
 try:
@@ -27,7 +26,11 @@ def hist_tweet(t_api):
     con = ''
     try:
         while con != 'n' or con != 'N' or con != 'No' or con != 'no':
-            num_tweets = input('How many tweets (200 maximum): ')
+            try:
+                num_tweets = input('How many tweets (200 maximum): ')
+            except NameError:
+                print "[+]ERROR: must be a number value!"
+                return
             targetUsr = raw_input('Enter target user: ')
             user = t_api.get_user(targetUsr)
             print '\n'
@@ -336,3 +339,20 @@ def twitlookup(t_api):
             print '[+]ERROR: Could not update databse'
             return
         return
+
+def mmenu():
+    print """
+    1. Live stream twitter (saved as csv)
+    2. Live stream NO LOGGING!
+    3. Gather last X tweets from user
+    4. View recent follows
+    5. View recent followers
+    6. Get count of mentions of another user (last 200 tweets)
+    7. Search for tweet
+    8. Add user to sqlite db
+    9. Delete all your tweets.
+    10. Delete all favorites
+    11. Delete Received DMs
+    12. Delete Sent DMs
+    0. Return
+        """
