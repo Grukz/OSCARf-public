@@ -32,6 +32,16 @@ try:
     import readline
 except:
     pass
+try:
+    import pyreadline
+except:
+    pass
+
+if "nt" in os.name:
+    print "Windows Support is in alpha! Proceed with caution!"
+    time.sleep(3)
+else:
+    pass
 
 #################
 # LOCAL IMPORTS #
