@@ -4,8 +4,7 @@ OSCAR-F
 
 Python OSINT Platform
 
-**OSCARf was coded/designed in Linux and Mac. Don't complain if you are running Windows and you cannot get it working**
-Windows support is something that I am going to address at a later date.
+**OSCARf was coded/designed in Linux and Mac. We are testing/adding Windows support!**
 
 **Install scripts are now in beta:** https://github.com/V12-Operations/Install-OSCARf
 
