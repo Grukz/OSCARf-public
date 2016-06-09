@@ -4,11 +4,11 @@ click==3.3
 colorama==0.3.2
 mechanize==0.2.5
 readline==6.2.4.1
-requests==2.4.3
-shodan==1.1.2
+requests==2.10.0
+shodan==1.5.3
 simplejson==3.6.4
-tweepy==2.3.0
-twitter==1.15.0
+tweepy==3.5.0
+twitter==1.17.1
 wsgiref==0.1.2
 cryptography==0.8
 dnspython==1.12.0
