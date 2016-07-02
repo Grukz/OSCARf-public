@@ -231,6 +231,9 @@ def twitMenu():
     elif opt == "12":
         oscrtwitter.dm_sent(t_api)
         twitMenu()
+    elif opt == "13":
+        oscrtwitter.tgrabber(t_auth,t_api)
+        twitMenu()
     elif opt == "0":
         main()
     else:

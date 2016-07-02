@@ -21,6 +21,7 @@ except:
 import sys
 import thread
 import os
+import csv
 
 def hist_tweet(t_api):
     con = ''
@@ -280,7 +281,7 @@ def favdelete(t_api):
                 print "Deleted:", status.id
             except:
                 print "Failed to delete:", status.id
-            sleep(1.5)
+            sleep(1)
     return
 
 def twitlookup(t_api):
@@ -340,6 +341,46 @@ def twitlookup(t_api):
             return
         return
 
+def tgrabber(t_auth,t_api):
+    try:
+        print "[+]WARNING: This will download every public post from a target. Doing this contintinually in a short amount of time may cause Twitter to temporarily ban your API key.\n\n"
+        agree = raw_input("Do you wish to continue? [y/n]: ")
+        agree = agree.lower()
+        if agree == "y":
+            pass
+        elif agree == "n":
+            return
+        tUname = raw_input("Enter User's Twitter Handle (Ex: lol_ownd): ")
+        alltweets = []
+        new_tweets = t_api.user_timeline(screen_name = tUname,count=200)
+        alltweets.extend(new_tweets)
+        oldest = alltweets[-1].id - 1
+        while len(new_tweets) > 0:
+            print "getting tweets before %s" % (oldest)
+
+    		#all subsiquent requests use the max_id param to prevent duplicates
+            new_tweets = t_api.user_timeline(screen_name = tUname,count=200,max_id=oldest)
+
+    		#save most recent tweets
+            alltweets.extend(new_tweets)
+
+    		#update the id of the oldest tweet less one
+            oldest = alltweets[-1].id - 1
+
+            print "...%s tweets downloaded so far" % (len(alltweets))
+            #transform the tweepy tweets into a 2D array that will populate the csv
+            outtweets = [[tweet.id_str, tweet.created_at, tweet.text.encode("utf-8")] for tweet in alltweets]
+
+    	#write the csv
+        with open('../%s_tweets.csv' % tUname, 'wb') as f:
+            writer = csv.writer(f)
+            writer.writerow(["id","created_at","text"])
+            writer.writerows(outtweets)
+        pass
+        return
+    except KeyboardInterrupt:
+        return
+
 def mmenu():
     print """
     1. Live stream twitter (saved as csv)
@@ -354,5 +395,6 @@ def mmenu():
     10. Delete all favorites
     11. Delete Received DMs
     12. Delete Sent DMs
+    13. Download all Tweets
     0. Return
         """

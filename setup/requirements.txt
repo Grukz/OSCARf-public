@@ -1,11 +1,11 @@
-Pillow==2.6.1
-beautifulsoup4==4.3.2
+Pillow==3.3.0
+beautifulsoup4==4.4.1
 click==3.3
-colorama==0.3.2
+colorama==0.3.7
 mechanize==0.2.5
 readline==6.2.4.1
 requests==2.10.0
-shodan==1.5.3
+shodan==1.5.4
 simplejson==3.6.4
 tweepy==3.5.0
 twitter==1.17.1
