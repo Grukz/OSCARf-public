@@ -35,8 +35,8 @@ If you receive setup errors similar to:
   `compilation terminated.`
 
   `error: command 'gcc' failed with exit status 1`
-  
-Please install the python-dev package: example: `apt-get install python-dev` 
+
+Please install the python-dev package: example: `apt-get install python-dev`
 
 **Please note that you will need to setup ONE twitter app for you/your business.**
 
@@ -51,12 +51,12 @@ After running the dependency check, run the setup.py script. This will allow you
 
 ## To setup Twitter Application
 
-Navigate to: https://apps.twitter.com/ and setup a new application. Please note the name and keys associated with it. 
-You sould only need to have a read only application!
+Navigate to: https://apps.twitter.com/ and setup a new application. Please note the name and keys associated with it.
+You should only need to have a read only application unless you want to edit/change profile data.
 
 ## Shodan API KEY
 
-Once you have a ShodanHQ account or login, go to: http://www.shodanhq.com/api_doc and copy the API key. Please note that if you want to use ALL of the shodan functionality of OSCAR, you will need to purchase an "Unlocked API" 
+Once you have a ShodanHQ account or login, go to: http://www.shodanhq.com/api_doc and copy the API key. Please note that if you want to use ALL of the shodan functionality of OSCAR, you will need to purchase an "Unlocked API"
 
 View API KEY: http://www.shodanhq.com/api_doc
 
@@ -76,4 +76,4 @@ Edit rss links in /config/rssfeeds.dat
 
 ## To scrape web source code
 
-Edit regex info in /config/webscrape.dat in the root. The path will change soon. 
+Edit regex info in /config/webscrape.dat in the root. The path will change soon.
