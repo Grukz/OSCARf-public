@@ -372,7 +372,7 @@ def tgrabber(t_auth,t_api):
             outtweets = [[tweet.id_str, tweet.created_at, tweet.text.encode("utf-8")] for tweet in alltweets]
 
     	#write the csv
-        with open('../%s_tweets.csv' % tUname, 'wb') as f:
+        with open('%s_tweets.csv' % tUname, 'wb') as f:
             writer = csv.writer(f)
             writer.writerow(["id","created_at","text"])
             writer.writerows(outtweets)
